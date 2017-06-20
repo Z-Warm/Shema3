@@ -1,0 +1,14 @@
+version: '2'
+services:
+    shema3-app:
+        image: shema3
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://shema3-postgresql:5432/Shema3
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    shema3-postgresql:
+        extends:
+            file: postgresql.yml
+            service: shema3-postgresql
